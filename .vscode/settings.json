@@ -1,0 +1,16 @@
+{
+    "workbench.settings.openDefaultKeybindings": true,
+    "sqltools.connections": [
+        {
+            "database": "${workspaceFolder}\\assets/databases/pizza_1.db",
+            "dialect": "SQLite",
+            "name": "dbpizza"
+        },
+        {
+            "database": "${workspaceFolder}\\assets/databases/pizza_5.db",
+            "dialect": "SQLite",
+            "name": "pp"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
