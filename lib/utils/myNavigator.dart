@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes/screens/categorieScreen.dart';
 
 class MyNavigator {
   static void goToHome(BuildContext context) {
@@ -9,7 +10,7 @@ class MyNavigator {
     Navigator.pushReplacementNamed(context, "/intro",);
   }
 
-  static void goToCategorie(BuildContext context) {
-    Navigator.pushNamed(context, "/categorie",);
+  static void goToCategorie(BuildContext context, String dbName, String dbPath) {
+    Navigator.pushNamed(context, "/categorie",arguments: CategorieScreen(title: dbName,path: dbPath));
   }
 }

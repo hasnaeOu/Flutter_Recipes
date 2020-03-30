@@ -1,15 +1,18 @@
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
+import 'package:recipes/models/recipeModel.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-class TemplateDatabaseProvider{ TemplateDatabaseProvider._();
+class TemplateDatabaseProvider {
 
-static final TemplateDatabaseProvider db = TemplateDatabaseProvider._();
+  final String path;
+  TemplateDatabaseProvider(this.path);
 
+  //final TemplateDatabaseProvider db = TemplateDatabaseProvider('');
 
-static Database _database;
+  Database _database;
 
 /* Future<Database> _getDb() async {
   if (_database != null)
@@ -19,18 +22,16 @@ static Database _database;
   return _database;
 } */
 
-Future<Database> get database async {
-  if (_database != null)
-  return _database;
-  _database = await initDB();
-  return _database;
-}
+  Future<Database> getdatabase() async {
+    if (_database != null) return _database;
+    _database = await initDB();
+    return _database;
+  }
 
-initDB() async{
-  Directory appDocDir = await getApplicationDocumentsDirectory();
-  String databasePath = join(appDocDir.path, 'template.db');
-  return await openDatabase(databasePath);
-}
+  initDB() async {
+    String databasePath = this.path;
+    return await openDatabase(databasePath);
+  }
 
 // Future<List<String>> getAllDatabasesNames() async{
 //   final db = await database;
@@ -40,17 +41,19 @@ initDB() async{
 //   return jsons.map((json) => Articl.fromJsonMap(json)).toList();
 // }
 
-// Future<List<Articl>> getAllArticls() async{
-//   final db = await database;
-//   // Building SELECT * FROM TABLE WHERE ID IN (id1, id2, ..., idn)
-//   List<Map> jsons = await db.rawQuery('SELECT * FROM Articl');
-//   print('${jsons.length} rows retrieved from db!');
-//   return jsons.map((json) => Articl.fromJsonMap(json)).toList();
-// }
+  Future<List<Recipe>> getAllRecipes() async {
+    final db = await getdatabase();
+    //print('from getAllRecipes : path = ${this.path}');
+    // Building SELECT * FROM TABLE WHERE ID IN (id1, id2, ..., idn)
+    List<Map> jsons = await db.rawQuery('SELECT * FROM tbl_recipes');
+    //print('${jsons.length} rows retrieved from db!');
+    return jsons.map((json) => Recipe.fromJsonMap(json)).toList();
+  }
 
-// static TemplateDatabaseProvider get() {
-//     return db;
-// }
+  /* static TemplateDatabaseProvider get(String mypath) {
+
+    return db;
+  } */
 
 //   Future<Articl> getArticl(String id) async{
 //   var db = await database;
@@ -59,4 +62,3 @@ initDB() async{
 //   return new Articl.fromMap(result[0]);
 //   }
 }
-

@@ -15,40 +15,41 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey();
-  
-    ScrollController _scrollController = new ScrollController();
+
+  ScrollController _scrollController = new ScrollController();
 
   AnimationController _controller;
   Animation<Offset> _offsetAnimation;
 
-  List<String> dbList = [''];
+  List<String> dbList = ['تحميل البيانات...'];
+
+  String myData = 'Loading';
 
   @override
   void initState() {
     super.initState();
-
+      
     _initDatabases().then((onValue) {
       for (var item in onValue) {
-        print(':::::::::::::::::::::::::::::::::::::::::> db :$item');
-        Tools.copyDataBase(item);
         setState(() {
-          dbList.add(item.toString().split('/').last.split('.').first);
+          Tools.copyDataBase(item).then((onValue2) {
+            print('==============================> Item from : $item');
+              setState(() {
+                myData = onValue2;
+              });
+          });
         });
       }
-      _scrollController.animateTo(
-      0.0,
-      curve: Curves.easeOut,
-      duration: const Duration(milliseconds: 300),
-    );
+      dbList = onValue;
+      dbList.insert(0, 'تحميل البيانات...');
+      Timer(Duration(seconds: 5), () => MyNavigator.goToHome(context));
     });
-
-    
 
     _controller =
         AnimationController(duration: const Duration(seconds: 2), vsync: this);
 
     _offsetAnimation = Tween<Offset>(
-      begin: Offset(-10.0, 20.0),
+      begin: Offset(0.0, 0.0),
       end: const Offset(10.0, 0.0),
     ).animate(CurvedAnimation(
       parent: _controller,
@@ -71,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen>
     // Repeat the animation of the appearance
     // when scrolling in the opposite direction (default false)
     // To get the effect as in a showcase for ListView, set true
-    reAnimateOnVisibility: false,
+    //reAnimateOnVisibility: false,
   );
 
   Widget buildAnimatedItem(
@@ -88,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen>
         // And slide transition
         child: SlideTransition(
           position: Tween<Offset>(
-            begin: Offset(0, -0.1),
+            begin: Offset(10.0, 0),
             end: Offset.zero,
           ).animate(animation),
           // Paste you Widget
@@ -124,7 +125,7 @@ class _SplashScreenState extends State<SplashScreen>
                       Padding(
                         padding: EdgeInsets.only(top: 10.0),
                         child: Text(
-                          'مطبخي',
+                          'Recipes',
                           style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontWeight: FontWeight.bold,
@@ -139,19 +140,16 @@ class _SplashScreenState extends State<SplashScreen>
                 flex: 2,
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.6,
-                  color: Colors.amber,
                   child: LiveList.options(
                     options: options,
-                    reverse: true,
                     itemBuilder: buildAnimatedItem,
                     scrollDirection: Axis.vertical,
                     itemCount: dbList.length,
-                    controller: _scrollController,
                   ),
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -163,7 +161,14 @@ class _SplashScreenState extends State<SplashScreen>
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16.0, color: Theme.of(context).accentColor),
-                    )
+                    ),
+                    Text(
+                      myData,
+                      softWrap: true,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 10.0, color: Theme.of(context).accentColor),
+                    ),
                   ],
                 ),
               )

@@ -14,7 +14,7 @@ description: A Flutter application to manage recipes and concepts similaire.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -30,6 +30,8 @@ dependencies:
   path_provider: ^1.6.5
   json_annotation: ^3.0.1
   auto_animated: ^2.0.2
+  marquee: ^1.3.1
+  flutter_svg: ^0.17.3+1
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +53,9 @@ flutter:
   assets:
    - assets/databases/
    - assets/images/dbImages/
+   - assets/icons/
+   - assets/images/pizza/
+   - assets/images/halawyat/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
