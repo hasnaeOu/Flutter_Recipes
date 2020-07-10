@@ -73,27 +73,6 @@ class _CategorieScreenState extends State<CategorieScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      AnimatedContainer(
-                        width: 250,
-                        height: 50.0,
-                        duration: Duration(milliseconds: 500),
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).accentColor,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(100.0),
-                            )),
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 12.0),
-                          child: TextField(
-                            textInputAction: TextInputAction.search,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'بحث',
-                              suffixIcon: InkWell(child: Icon(Icons.search)),
-                            ),
-                          ),
-                        ),
-                      ),
                       Icon(
                         Icons.settings,
                         color: Theme.of(context).accentColor,
@@ -139,7 +118,8 @@ class _CategorieScreenState extends State<CategorieScreen> {
                                     child: Container(
                                       width: double.maxFinite,
                                       decoration: BoxDecoration(
-                                        color: Colors.white70,
+                                        color: Theme.of(context).accentColor.withOpacity(0.8),
+                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0),topRight: Radius.circular(25.0),)
                                       ),
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -152,7 +132,7 @@ class _CategorieScreenState extends State<CategorieScreen> {
                                                     padding:
                                                         EdgeInsets.all(4.0),
                                                     decoration: BoxDecoration(
-                                                      color: Colors.black12,
+                                                      color: Colors.white54,
                                                       borderRadius: BorderRadius.all(Radius.circular(100.0))
                                                     ),
                                                     child: this.recipes[index].favorited == true
@@ -167,7 +147,7 @@ class _CategorieScreenState extends State<CategorieScreen> {
                                                     this.recipes[index].name,
                                                     style: TextStyle(
                                                       shadows: [Shadow(color: Theme.of(context).accentColor,blurRadius: 10.0,offset: Offset(1.0, 5.0))],
-                                                      color: Colors.black,
+                                                      color: Theme.of(context).primaryColor,
                                                       fontSize: 18.0,
                                                       fontWeight: FontWeight.bold,
                                                     ),
@@ -190,10 +170,10 @@ class _CategorieScreenState extends State<CategorieScreen> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Container(
+                                          this.recipes[index].preparetime.length < 4 ? SizedBox() : Container(
                                             padding: EdgeInsets.all(4.0),
                                             decoration: BoxDecoration(
-                                              color: Colors.white70,
+                                              color: Theme.of(context).accentColor.withOpacity(0.8),
                                               borderRadius: BorderRadius.only(topLeft: Radius.circular(100.0),bottomLeft: Radius.circular(100.0)),
                                             ),
                                             child: Row(
@@ -212,10 +192,10 @@ class _CategorieScreenState extends State<CategorieScreen> {
                                             ),
                                           ),
                                           SizedBox(height: 10.0,),
-                                          Container(
+                                          this.recipes[index].cooktime.length < 4 ? SizedBox() : Container(
                                             padding: EdgeInsets.all(4.0),
                                             decoration: BoxDecoration(
-                                              color: Colors.white70,
+                                              color: Theme.of(context).accentColor.withOpacity(0.8),
                                               borderRadius: BorderRadius.only(topLeft: Radius.circular(100.0),bottomLeft: Radius.circular(100.0)),
                                             ),
                                             child: Row(
@@ -234,10 +214,10 @@ class _CategorieScreenState extends State<CategorieScreen> {
                                             ),
                                           ),
                                           SizedBox(height: 10.0,),
-                                          Container(
+                                          this.recipes[index].serves.length < 1 ? SizedBox() : Container(
                                             padding: EdgeInsets.all(4.0),
                                             decoration: BoxDecoration(
-                                              color: Colors.white70,
+                                              color: Theme.of(context).accentColor.withOpacity(0.8),
                                               borderRadius: BorderRadius.only(topLeft: Radius.circular(100.0),bottomLeft: Radius.circular(100.0)),
                                             ),
                                             child: Row(

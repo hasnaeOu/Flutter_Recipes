@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class MyColors {
   static List<Color> colors1 = [
-    Color(0XFFE2524D),
-    Color(0XFFED6550),
-    Color(0XFF3E5E4B),
+    Color(0XFF313440),
+    Color(0XFFD0D4E8),
+    Color(0XFFD7C88B),
     Color(0XFF4DB596),
     Color(0XFFB2AF8B),
   ];

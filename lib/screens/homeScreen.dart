@@ -11,7 +11,7 @@ import 'package:recipes/utils/myNavigator.dart';
 class HomeScreen extends StatefulWidget {
   final String title;
 
-  const HomeScreen({Key key, this.title = 'الاصناف'}) : super(key: key);
+  const HomeScreen({Key key, this.title = 'الرئيسية'}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -58,32 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Theme.of(context).accentColor)),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
                   width: double.maxFinite,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      AnimatedContainer(
-                        width: 250,
-                        height: 50.0,
-                        duration: Duration(milliseconds: 500),
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).accentColor,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(100.0),
-                            )),
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 12.0),
-                          child: TextField(
-                            textInputAction: TextInputAction.search,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'بحث',
-                              suffixIcon: InkWell(child: Icon(Icons.search)),
-                            ),
-                          ),
-                        ),
-                      ),
                       Icon(
                         Icons.settings,
                         color: Theme.of(context).accentColor,
