@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+<<<<<<< HEAD
       debugShowCheckedModeBanner: false,
       title: 'Recipe App',
       theme: ThemeData(
@@ -48,6 +49,18 @@ class MyApp extends StatelessWidget {
             fontSize: 18,
             color: MyColors.vintageReport[0],
             fontWeight: FontWeight.w900,
+=======
+        //debugShowCheckedModeBanner: false,
+        locale: Locale("ar"),
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          primaryColor: MyColors.colors1[0],
+          accentColor: MyColors.colors1[2],
+          fontFamily: GoogleFonts.cairo().fontFamily,
+          textTheme: TextTheme(
+            title: TextStyle(color: Color(0XFF3E5E4B)),
+>>>>>>> fcba3f1cdd7b12232fd081efbabf13222cac9e39
           ),
         ),
       ),
