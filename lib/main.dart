@@ -1,45 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:recipes/screens/categorieScreen.dart';
-import 'package:recipes/screens/homeScreen.dart';
-import 'package:recipes/screens/introScreen.dart';
-import 'package:recipes/screens/splashScreen.dart';
-import 'package:recipes/utils/myColors.dart';
+import 'package:recipe/pages/about_us.dart';
+import 'package:recipe/pages/favorites.dart';
+import 'package:recipe/pages/home_screen.dart';
+import 'package:recipe/pages/search_screen.dart';
+import 'package:recipe/pages/privacy.dart';
+import 'package:recipe/pages/recipe_details.dart';
+import 'package:recipe/pages/splash_screen.dart';
+import 'package:recipe/utils/ads_helper.dart';
+import 'package:recipe/utils/my_theme.dart';
 
 var routes = <String, WidgetBuilder>{
-  "/intro": (BuildContext context) => IntroScreen(),
-  "/home": (BuildContext context) => HomeScreen(),
-  "/categorie": (BuildContext context) => CategorieScreen(),
+  "/home": (BuildContext context) => Home(),
+  "/favorites": (BuildContext context) => Favorites(),
+  "/search": (BuildContext context) => Search(),
+  "/recipe_details": (BuildContext context) => RecipeDetails2(),
+  "/about": (BuildContext context) => About(),
+  "/privacy": (BuildContext context) => Privacy(),
 };
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  AdsHelper.initFacebookAds();
+  //AdsHelper.initAdmobAds();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-
-  // This widget is the root of your application.
-  //enum ui = SystemUiOverlay.top;
-  //SystemUiOverlay ui = SystemUiOverlay.top;
+  const MyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top,SystemUiOverlay.bottom]);
     return MaterialApp(
-        //debugShowCheckedModeBanner: false,
-        locale: Locale("ar"),
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          primaryColor: MyColors.colors1[3],
-          accentColor: MyColors.colors1[0],
-          fontFamily: GoogleFonts.cairo().fontFamily,
-          textTheme: TextTheme(
-            title: TextStyle(color: Color(0XFF3E5E4B)),
+      debugShowCheckedModeBanner: false,
+      title: 'Recipe App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        primaryColor: MyColors.vintageReport[0],
+        accentColor: MyColors.vintageReport[1],
+        fontFamily: 'Cairo',
+        textTheme: TextTheme(
+          bodyText2: TextStyle(
+            fontSize: 16,
+            color: MyColors.vintageReport[2],
+            fontWeight: FontWeight.w600
+          ),
+          headline6: TextStyle(
+            fontSize: 18,
+            color: MyColors.vintageReport[0],
+            fontWeight: FontWeight.w900,
           ),
         ),
-        home: Directionality(
-          textDirection: TextDirection.rtl,
-          child: SplashScreen(),
-        ),
+      ),
+      home: Directionality(
+        textDirection: TextDirection.rtl,
+        child: SplashScreen(),
+      ),
       routes: routes,
     );
   }
