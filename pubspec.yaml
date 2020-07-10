@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 name: recipe
 description: A new Flutter project.
-=======
-name: recipes
-description: A Flutter application to manage recipes and concepts similaire.
->>>>>>> fcba3f1cdd7b12232fd081efbabf13222cac9e39
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +14,7 @@ description: A Flutter application to manage recipes and concepts similaire.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -30,7 +25,6 @@ dependencies:
   cupertino_icons: ^0.1.2
   google_fonts: ^0.3.10
   path_provider: ^1.6.5
-<<<<<<< HEAD
   sqflite: ^1.3.0
   flutter_svg: ^0.17.3+1
   package_info: ^0.4.0+16
@@ -43,12 +37,6 @@ dependencies:
   facebook_audience_network: ^0.5.0
   provider: ^4.1.2
 #  admob_flutter: ^0.3.4
-=======
-  json_annotation: ^3.0.1
-  auto_animated: ^2.0.2
-  marquee: ^1.3.1
-  flutter_svg: ^0.17.3+1
->>>>>>> fcba3f1cdd7b12232fd081efbabf13222cac9e39
 
 dev_dependencies:
   flutter_test:
@@ -73,18 +61,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-<<<<<<< HEAD
    - assets/
    - assets/icons/
    - assets/images/
    - assets/database/
-=======
-   - assets/databases/
-   - assets/images/dbImages/
-   - assets/icons/
-   - assets/images/pizza/
-   - assets/images/halawyat/
->>>>>>> fcba3f1cdd7b12232fd081efbabf13222cac9e39
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

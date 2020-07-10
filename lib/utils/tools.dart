@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
-<<<<<<< HEAD
 class Tools{
   static launchURLRate(String appName) async {
     var url =
@@ -31,18 +30,11 @@ class Tools{
   }
 
   static Future<String> copyDataBase() async {
-=======
-class Tools {
-  static Future<String> copyDataBase(String assetFullName) async {
->>>>>>> fcba3f1cdd7b12232fd081efbabf13222cac9e39
     String path = '';
     try {
       Directory documentsDirectory = await getApplicationDocumentsDirectory();
 
-<<<<<<< HEAD
       String assetFullName = 'assets/database/db_recipes.db';
-=======
->>>>>>> fcba3f1cdd7b12232fd081efbabf13222cac9e39
       /* final Map<String, dynamic> manifestMap = jsonDecode(await manifestContent);
 
       final databasesPaths = manifestMap.keys
@@ -65,15 +57,9 @@ class Tools {
       await new File(path).writeAsBytes(bytes);
       print("==============================> Item Copied : $path");
 
-<<<<<<< HEAD
      /*  }else{
         print("==============================> Database Already Exist!");
       } */
-=======
-      // }else{
-      //   throw new Exception("Database Already Exist!");
-      // }
->>>>>>> fcba3f1cdd7b12232fd081efbabf13222cac9e39
     } catch (e) {
       print("Erreur Copie : $e");
     }
