@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Recipe App',
+      title: 'Recipes',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: MyColors.vintageReport[0],
@@ -40,10 +40,9 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Cairo',
         textTheme: TextTheme(
           bodyText2: TextStyle(
-            fontSize: 16,
-            color: MyColors.vintageReport[2],
-            fontWeight: FontWeight.w600
-          ),
+              fontSize: 16,
+              color: MyColors.vintageReport[2],
+              fontWeight: FontWeight.w600),
           headline6: TextStyle(
             fontSize: 18,
             color: MyColors.vintageReport[0],
